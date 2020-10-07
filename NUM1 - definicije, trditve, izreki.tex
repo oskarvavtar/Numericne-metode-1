@@ -23,4 +23,72 @@
 \tableofcontents
 \pagebreak
 
+% #################################################################################################
+
+\section{NUMERIČNO RAČUNANJE}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Uvod}
+\vspace{0.5cm}
+
+\begin{definicija}[Napaka]
+
+Pri numeričnem računanju izračunamo numerični približek za točno rešitev. Razlika med približkom in točno vrednostjo je \textit{napaka} približka. Ločimo \textit{absolutno} in \textit{relativno} napako.
+
+\begin{itemize}
+	\item absolutna napaka $=$ približek $-$ točna vrednost
+	\item relativna napaka $=$ $\frac{\text{absolutna napaka}}{\text{točna vrednost}}$
+\end{itemize}
+
+Naj bo $x$ točna vrednost, $\hat{x}$ pa približek za $x$.
+
+\begin{itemize}
+	\item Če je $\hat{x} = x + d_a$, potem je $d_a = \hat{x} - x$ \textit{absolutna napaka}.
+	\item Če je $\hat{x} = x(1 + d_r)$, potem je $d_r = \frac{\hat{x} - x}{x}$ \textit{relativna napaka}.
+\end{itemize}
+
+\end{definicija}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Premična pika}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Velja fl$(x) = x(1 + \delta)$ za $|\delta| \leq u$, kjer je
+$$u = \frac{1}{2}b^{1-t}$$
+\textit{osnovna zaokrožitvena napaka}:
+
+\begin{itemize}
+	\item single: $u = 2^{-24} = 6 \times 10^{-8}$
+	\item double: $u = 2^{-53} = 1 \times 10^{-16}$
+\end{itemize}
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{izrek}
+
+Če za število $x$ velja, da $|x|$ leži na intervalu med najmanjšim in največjim \textit{pozitivnim predstavljivim normaliziranim} številom, potem velja
+$$\frac{|\text{fl}(x) - x|}{|x|} \leq u.$$
+
+\end{izrek}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Občutljivost problema}
+\vspace{0.5cm}
+
+\begin{definicija}[Občutljivost]
+
+Če se rezultat pri majhni spremembi argumentov (\textit{motnji} oz. \textit{perturbaciji}) ne spremeni veliko, je problem \textit{neobčutljiv}, sicer pa je \textit{občutljiv}.
+
+\end{definicija}
+\vspace{0.5cm}
+
 \end{document}
