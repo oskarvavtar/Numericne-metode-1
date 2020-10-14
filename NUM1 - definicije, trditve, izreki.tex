@@ -4,6 +4,11 @@
 
 \usepackage{amsthm}
 \usepackage{amsmath, amssymb, amsfonts}
+\usepackage{listings}
+\lstset{
+	basicstyle=\ttfamily,
+	mathescape
+}
 
 \theoremstyle{definition}
 \newtheorem{definicija}{Definicija}[section]
@@ -12,6 +17,7 @@
 \newtheorem{trditev}{Trditev}
 \newtheorem{izrek}{Izrek}
 \newtheorem*{dokaz}{Dokaz}
+\newtheorem*{algoritem}{Algoritem}
 
 \title{Numerične metode 1 - definicije, trditve in izreki}
 \author{Oskar Vavtar}
@@ -89,6 +95,79 @@ $$\frac{|\text{fl}(x) - x|}{|x|} \leq u.$$
 Če se rezultat pri majhni spremembi argumentov (\textit{motnji} oz. \textit{perturbaciji}) ne spremeni veliko, je problem \textit{neobčutljiv}, sicer pa je \textit{občutljiv}.
 
 \end{definicija}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Vrste napak pri numeričnem računanju}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Pri numeričnem računanje se pojavijo 3 vrste napak:
+\begin{enumerate}
+	\item \textsc{Neodstranljive napake}: 
+	Npr. ko podatek ni predstavljivo število. Namesto $y = f(x)$ lahko v najboljšem primeru izračunamo $\overline{y} = f(\overline{x})$, kjer je $\overline{x}$ najbližje predstavljivo število. 
+	$$D_n = y - \overline{y} = f(x) - f(\overline{x})$$
+	\item \textsc{Napaka metode}:
+	Npr. ko na voljo nimamo željene operacije. Namesto $f(\overline{x})$ potem izračunamo $\widetilde{y}=g(\overline{x})$, kjer je $g(x)$ približek za $f(x)$, kjer znamo vrednost $g$ izračunati s končnim številom operacij. 
+	$$D_m = \overline{y} - \widetilde{y} = f(\overline{x}) - g(\overline{x})$$
+	\item \textsc{Zaokrožitvene napake}:
+	Pri izračunu $\widetilde{y}=g(\overline{x})$ lahko pri vsaki osnovni operaciji pride do zaokrožitvene napake, zato na koncu kot numeričen rezultat dobimo $\widehat{y}$.
+	$$D_z = \widetilde{y} - \widehat{y}$$
+\end{enumerate}
+
+Skupna napaka:
+$$D = D_n + D_m + D_z$$
+
+V splošnem lahko ocenimo:
+$$|D| \leq |D_n| + |D_m| + |D_z|$$
+\end{definicija}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Stabilnost metode}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Če metoda za $\forall x$ vrne $\widehat{y}$, ki je \textit{absolutno (relativno)} blizu točnemu $y$, je metoda \textit{direktno stabilna}.
+
+Če metoda za $\forall x$ vrne tak $\widehat{y}$, da $\exists \widehat{x}$ absolutno (relativno) blizu $x$, da je $\widehat{y}=f(\widehat{x})$ (točno), je metoda \textit{obratno stabilna}. \\
+
+\noindent V splošnem:
+$$|\text{direktna napaka}| \leq |\text{občutljivost}| \cdot |\text{obratna napaka}|$$
+
+\end{definicija}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Analiza zaokrožitvenih napak}
+\vspace{0.5cm}
+
+\begin{algoritem}
+
+Dana so predstavljiva števila $x_0, x_1, \ldots, x_n$; \\ računamo $p = x_0 \cdot x_1 \cdot \ldots \cdot x_n$. \\
+
+\noindent \textsc{Točen algoritem}:
+\begin{lstlisting}
+p$_\texttt{0}$ = x$_\texttt{0}$
+i = 1,...,n
+$~~~~$p$_\texttt{i}$ = p$_\texttt{i-1} \cdot$x$_\texttt{i}$
+p = p$_\texttt{n}$
+\end{lstlisting} 
+
+\noindent \textsc{Dejanski algoritem}:
+\begin{lstlisting}
+$\widehat{\texttt{p}}_\texttt{0}$ = x$_\texttt{0}$
+i = 1,...,n
+$~~~~$$\widehat{\texttt{p}}_\texttt{i}$ = $\widehat{\texttt{p}}_\texttt{i-1} \cdot$x$_\texttt{i}\cdot$(1 + $\delta_\texttt{i}$)$~~|\delta_\texttt{i}| \leq$ u
+$\widehat{\texttt{p}}$ = $\widehat{\texttt{p}}_\texttt{n}$
+\end{lstlisting}
+
+\end{algoritem}
 \vspace{0.5cm}
 
 \end{document}
