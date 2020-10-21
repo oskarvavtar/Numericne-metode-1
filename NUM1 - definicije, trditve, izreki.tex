@@ -4,6 +4,7 @@
 
 \usepackage{amsthm}
 \usepackage{amsmath, amssymb, amsfonts}
+\usepackage{relsize}
 \usepackage{listings}
 \lstset{
 	basicstyle=\ttfamily,
@@ -147,11 +148,13 @@ $$|\text{direktna napaka}| \leq |\text{občutljivost}| \cdot |\text{obratna napa
 \subsection{Analiza zaokrožitvenih napak}
 \vspace{0.5cm}
 
+\subsubsection{Produkt $n+1$ predstavljivih števil}
+
 \begin{algoritem}
 
 Dana so predstavljiva števila $x_0, x_1, \ldots, x_n$; \\ računamo $p = x_0 \cdot x_1 \cdot \ldots \cdot x_n$. \\
 
-\noindent \textsc{Točen algoritem}:
+\noindent \textsc{Točno}:
 \begin{lstlisting}
 p$_\texttt{0}$ = x$_\texttt{0}$
 i = 1,...,n
@@ -159,7 +162,7 @@ $~~~~$p$_\texttt{i}$ = p$_\texttt{i-1} \cdot$x$_\texttt{i}$
 p = p$_\texttt{n}$
 \end{lstlisting} 
 
-\noindent \textsc{Dejanski algoritem}:
+\noindent \textsc{Numerično}:
 \begin{lstlisting}
 $\widehat{\texttt{p}}_\texttt{0}$ = x$_\texttt{0}$
 i = 1,...,n
@@ -168,6 +171,83 @@ $\widehat{\texttt{p}}$ = $\widehat{\texttt{p}}_\texttt{n}$
 \end{lstlisting}
 
 \end{algoritem}
+\vspace{0.5cm}
+\pagebreak
+
+\subsubsection{Skalarni produkt vektorjev dolžine $n$}
+
+\begin{algoritem}
+
+Imamo vektorje \textit{predstavljivih} števil $a = [a_1, \dots, a_n]^T$, $b = [b_1, \dots, b_n]^T$. Računamo $s = \langle b^T, a \rangle = \mathlarger{\sum_{i=1}^n a_i b_i}$.
+
+\noindent \textsc{Točno}:
+\begin{lstlisting}
+s$_\texttt{0}$ = 0
+i = 1,...,n
+$~~~~$p$_\texttt{i}$ = a$_\texttt{i} \cdot$b$_\texttt{i}$
+$~~~~$s$_\texttt{i}$ = s$_\texttt{i-1}$ + p$_\texttt{i}$
+s = s$_\texttt{n}$
+\end{lstlisting}
+
+\noindent \textsc{Numerično}:
+\begin{lstlisting}
+$\widehat{\texttt{s}}_\texttt{0}$ = 0
+i = 1,...,n
+$~~~~\widehat{\texttt{p}}_\texttt{i}$ = a$_\texttt{i} \cdot$b$_\texttt{i} \cdot$(1 + $\alpha_i$)$~~~~~~~~|\alpha_i| \leq u$
+$~~~~\widehat{\texttt{s}}_\texttt{i}$ = ($\widehat{\texttt{s}}_\texttt{i-1}$ + $\widehat{\texttt{p}}_\texttt{i}$)$\cdot$(1 + $\beta_i$)$~~|\beta_i| \leq u$
+$\widehat{\texttt{s}}$ = $\widehat{\texttt{s}}_\texttt{n}$
+\end{lstlisting}
+
+\end{algoritem}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Računanje skalarnega produkta je \textit{obratno} stabilno, ni pa \textit{direktno} stabilno.
+
+\end{trditev}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\pagebreak
+
+% #################################################################################################
+
+\section{NELINEARNE ENAČBE}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Uvod}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bo $\alpha$ ničla funkcije $f$, ki je \textit{zvezno odvedljiva} v okolici $\alpha$:
+\begin{itemize}
+
+	\item $f'(\alpha) \neq 0$: $\alpha$ je \textit{enostavna} ničla
+	
+	\item $f'(\alpha) = 0$: $\alpha$ je \textit{večkratna} ničla \\
+	
+	Če je $f$ $m$-krat zvezno odveljiva in
+	$$f'(\alpha) = f''(\alpha) = \ldots = f^{(m-1)}(\alpha) = 0,~~f^{(m)} \neq 0,$$
+	je $\alpha$ $m$-kratna ničla.
+
+\end{itemize}
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}[Občutljivost ničel]
+
+Naj bo $\alpha$ enostavna ničla. Če v okolici $x = \alpha$ obstaja inverzna funkcija $\alpha = f^{-1}(0)$ v bistvu "računamo" vrednost inverzne funkcije. Občutljivost je enaka absolutni vrednosti odvoda inverzna funkcije:
+$$|(f^{-1})'(0)| = \frac{1}{|f'(f^{-1}(0))|} = \frac{1}{|f'(\alpha)|}.$$
+
+Večkratno ničlo lahko izračunamo le z natančnostjo $u^{\frac{1}{m}}$, kjer je $m$ večkratnost ničle (za dvojno ničlo dobimo le polovico točnih decimalk, za trojno le tretjino...). 
+
+\end{trditev}
 \vspace{0.5cm}
 
 \end{document}
