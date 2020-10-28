@@ -250,4 +250,65 @@ Večkratno ničlo lahko izračunamo le z natančnostjo $u^{\frac{1}{m}}$, kjer j
 \end{trditev}
 \vspace{0.5cm}
 
+% *************************************************************************************************
+
+\subsection{Bisekcija}
+\vspace{0.5cm}
+
+\begin{izrek}
+
+Če je $f$ realna zvezna funkcija na $[a, b]$ in je $f(a) \cdot f(b) < 0$, potem $\exists \xi \in (a, b)$, da je $f(\xi) = 0$.
+
+\end{izrek}
+\vspace{3cm}
+
+\begin{algoritem}[Bisekcija]
+
+Naj velja $f(a) \cdot f(b) < 0$ in $a < b$:
+\begin{lstlisting}
+e = b - a
+while e > $\varepsilon$
+$~~~~$e = e/2, c = a + e
+$~~~~$if sign(f(c)) = sign(f(a))
+$~~~~~~~~$a = c
+$~~~~$else
+$~~~~~~~~$b = c
+\end{lstlisting}
+\end{algoritem}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Navadna iteracija}
+\vspace{0.5cm}
+
+\begin{algoritem}[Navadna iteracija]
+~\\
+\begin{lstlisting}
+izberi x$_\texttt{0}$
+r = 0, 1, 2,...
+$~~~~$x$_{\texttt{r+1}}$ = g(x$_{\texttt{r}}$)
+\end{lstlisting}
+~\\
+Ustavitveni kriterij:
+\begin{enumerate}
+	\item[a)] $r > r_{max}$ (prekoračeno število korakov)
+	\item[b)] $|r_{x+1} - r_x| < \varepsilon$
+\end{enumerate}
+\end{algoritem}
+\vspace{0.5cm}
+
+\begin{izrek}
+
+Naj bo $\alpha = g(\alpha)$ in naj iteracijska  funkcija $g$ na intervalu $I = [\alpha - \delta, \alpha + \delta]$ za nek $\delta > 0$ zadošča Lipschitzovem pogoju
+$$|g(x) - g(y)| \leq m|x - y| ~~\text{za}~~ x, y \in I, 0 \leq m < 1.$$
+Potem za $\forall x_0 \in I$ zaporedje $x_{r+1} = g(x_r)$, $r = 0, 1, \ldots$ konvergira k $\alpha$ in velja
+\begin{itemize}
+	\item $|x_r - \alpha| ~\leq~ m^r \cdot |x_0 - \alpha|$
+	\item $|x_{r+1} - \alpha| ~\leq~ \cfrac{m}{1-m} \cdot |x_{r+1} - x_r|$
+\end{itemize}
+
+\end{izrek}
+\vspace{0.5cm}
+
 \end{document}
