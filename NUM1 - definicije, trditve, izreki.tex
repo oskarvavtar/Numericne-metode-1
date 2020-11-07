@@ -19,6 +19,7 @@
 \newtheorem{izrek}{Izrek}
 \newtheorem*{dokaz}{Dokaz}
 \newtheorem*{algoritem}{Algoritem}
+\newtheorem*{posledica}{Posledica}
 
 \title{Numerične metode 1 - definicije, trditve in izreki}
 \author{Oskar Vavtar}
@@ -310,5 +311,33 @@ Potem za $\forall x_0 \in I$ zaporedje $x_{r+1} = g(x_r)$, $r = 0, 1, \ldots$ ko
 
 \end{izrek}
 \vspace{0.5cm}
+
+\begin{posledica}
+
+Naj bo $\alpha = g(\alpha)$, $g$ \textit{zvezno odvedljiva} in $|g'(\alpha)| < 1$. Potem $\exists \delta > 0$, da za $\forall x_0 \in [\alpha - \delta, \alpha + \delta]$ zaporedje $x_{r+1} = g(x_r)$ konvergira k $\alpha$.
+
+\end{posledica}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj zaporedje $\{ x_r \}$ konvergira proti $\alpha$ ($\lim_{r \rightarrow \infty} x_r = \alpha)$. Pravimo, da zaporedje konvergira z redom konvergence $p$, če obstaja limita
+$$\lim_{r \rightarrow \infty} \frac{|x_{r+1} - \alpha|}{|x_r - \alpha|^p} = C > 0.$$
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{izrek}
+
+Naj bo iteracijska funkcija $g$ $p$-krat \textit{zvezno odvedljiva} v okolici negibne točke $\alpha$. Če velja $g'(\alpha) = \ldots = g^{(p-1)}(\alpha) = 0$ in $g^{(p)}(\alpha) \neq 0$, potem zaporedje $x_{r+1} = g(x_r)$, $r = 0, 1, \ldots$, v okolici $\alpha$ konvergira z redom $p$. V primeru $p = 1$ mora za konvergenco veljati še $|g'(\alpha)| < 1$. 
+
+\end{izrek}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\pagebreak
+
+% #################################################################################################
 
 \end{document}
