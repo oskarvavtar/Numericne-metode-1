@@ -20,6 +20,7 @@
 \newtheorem*{dokaz}{Dokaz}
 \newtheorem*{algoritem}{Algoritem}
 \newtheorem*{posledica}{Posledica}
+\newtheorem*{metoda}{Metoda}
 
 \title{Numerične metode 1 - definicije, trditve in izreki}
 \author{Oskar Vavtar}
@@ -332,6 +333,68 @@ $$\lim_{r \rightarrow \infty} \frac{|x_{r+1} - \alpha|}{|x_r - \alpha|^p} = C > 
 Naj bo iteracijska funkcija $g$ $p$-krat \textit{zvezno odvedljiva} v okolici negibne točke $\alpha$. Če velja $g'(\alpha) = \ldots = g^{(p-1)}(\alpha) = 0$ in $g^{(p)}(\alpha) \neq 0$, potem zaporedje $x_{r+1} = g(x_r)$, $r = 0, 1, \ldots$, v okolici $\alpha$ konvergira z redom $p$. V primeru $p = 1$ mora za konvergenco veljati še $|g'(\alpha)| < 1$. 
 
 \end{izrek}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Tangentna metoda}
+\vspace{0.5cm}
+
+\begin{metoda}
+
+$$x_{r+1} = x_r - \frac{f(x_r)}{f'(x_r)}$$
+Konvergenca:
+$$|e_{r+1}| \approx C \cdot |e_r|^2$$
+
+\end{metoda}
+\vspace{0.5cm}
+
+\begin{posledica}
+
+Če je $f$ \textit{dvakrat zvezno odvedljiva} v okolici ničle $\alpha$, potem tangentna metoda za dovolj dober začetni približek $x_0$ vedno konvergira k $\alpha$.
+
+\end{posledica}
+\vspace{0.5cm}
+
+\begin{izrek}
+
+Naj bo funkcija $f$ na $I = [a, \infty)$ \textit{dvakrat zvezno odvedljiva, naraščajoča in ima ničlo na $\alpha \in I$}. Potem je $\alpha$ edina ničla na $I$ in za $\forall x_0 \in I$ tangentna metoda konvergira le k $\alpha$.
+
+\end{izrek}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Metode brez $f'$}
+\vspace{0.5cm}
+
+
+\begin{metoda}[Sekantna metoda]
+
+$$x_{r+1} = x_r - \frac{f(x_r)(x_r - x_{r-1})}{f(x_r) - f(x_{r-1})}$$
+Konvergenca:
+$$|e_{r+1}| \approx C \cdot |e_r| \cdot |e_{r-1}|$$
+
+\end{metoda}
+\vspace{0.5cm}
+
+\begin{metoda}[Mullerjeva metoda]
+
+Skozi točke $(x_r, f(x_r))$, $(x_{r-1}, f(x_{r-1}))$, \\$(x_{r-2}, f(x_{r-2}))$ potegnemo kvadratni polinom $y = p(x)$ in za $x_{r+1}$ vzamemo tisto ničlo polinoma $p$, ki je bližje $x_r$. \\
+
+\noindent Konvergenca:
+$$|e_{r+1}| \approx C \cdot |e_r| \cdot |e_{r-1}| \cdot |e_{r-2}|$$
+
+\end{metoda}
+\vspace{0.5cm}
+
+\begin{metoda}[Inverzna interpolacija]
+
+Zamenjamo vlogi $x$ in $y$ in vzamemo kvadratni polinom $x = \mathcal{L}(y)$, ki gre skozi točke $(x_r, f(x_r))$, $(x_{r-1}, f(x_{r-1}))$, $(x_{r-2}, f(x_{r-2}))$. Za $x_{r+1}$ vzamemo
+$$x_{r+1} = \mathcal{L}(0).$$
+Red konvergence je enak kot pri \textit{Mullerjevi metodi}.
+
+\end{metoda}
 \vspace{0.5cm}
 
 % *************************************************************************************************
