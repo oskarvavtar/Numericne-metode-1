@@ -20,6 +20,7 @@
 \newtheorem*{dokaz}{Dokaz}
 \newtheorem*{algoritem}{Algoritem}
 \newtheorem*{posledica}{Posledica}
+\newtheorem*{opomba}{Opomba}
 \newtheorem*{metoda}{Metoda}
 
 \title{Numerične metode 1 - definicije, trditve in izreki}
@@ -69,7 +70,7 @@ Naj bo $x$ točna vrednost, $\hat{x}$ pa približek za $x$.
 \begin{definicija}
 
 Velja fl$(x) = x(1 + \delta)$ za $|\delta| \leq u$, kjer je
-$$u = \frac{1}{2}b^{1-t}$$
+$$u ~=~ \frac{1}{2}b^{1-t}$$
 \textit{osnovna zaokrožitvena napaka}:
 
 \begin{itemize}
@@ -83,7 +84,7 @@ $$u = \frac{1}{2}b^{1-t}$$
 \begin{izrek}
 
 Če za število $x$ velja, da $|x|$ leži na intervalu med najmanjšim in največjim \textit{pozitivnim predstavljivim normaliziranim} številom, potem velja
-$$\frac{|\text{fl}(x) - x|}{|x|} \leq u.$$
+$$\frac{|\text{fl}(x) - x|}{|x|} ~\leq~ u.$$
 
 \end{izrek}
 \vspace{0.5cm}
@@ -95,7 +96,7 @@ $$\frac{|\text{fl}(x) - x|}{|x|} \leq u.$$
 
 \begin{definicija}[Občutljivost]
 
-Če se rezultat pri majhni spremembi argumentov (\textit{motnji} oz. \textit{perturbaciji}) ne spremeni veliko, je problem \textit{neobčutljiv}, sicer pa je \textit{občutljiv}.
+Če se rezultat pri majhni spremembi argumentov\footnote{\textit{Motnji} oz. \textit{perturbaciji}.} ne spremeni veliko, je problem \textit{neobčutljiv}, sicer pa je \textit{občutljiv}.
 
 \end{definicija}
 \vspace{0.5cm}
@@ -111,20 +112,20 @@ Pri numeričnem računanje se pojavijo 3 vrste napak:
 \begin{enumerate}
 	\item \textsc{Neodstranljive napake}: 
 	Npr. ko podatek ni predstavljivo število. Namesto $y = f(x)$ lahko v najboljšem primeru izračunamo $\overline{y} = f(\overline{x})$, kjer je $\overline{x}$ najbližje predstavljivo število. 
-	$$D_n = y - \overline{y} = f(x) - f(\overline{x})$$
+	$$D_n ~=~ y - \overline{y} ~=~ f(x) - f(\overline{x})$$
 	\item \textsc{Napaka metode}:
 	Npr. ko na voljo nimamo željene operacije. Namesto $f(\overline{x})$ potem izračunamo $\widetilde{y}=g(\overline{x})$, kjer je $g(x)$ približek za $f(x)$, kjer znamo vrednost $g$ izračunati s končnim številom operacij. 
-	$$D_m = \overline{y} - \widetilde{y} = f(\overline{x}) - g(\overline{x})$$
+	$$D_m ~=~ \overline{y} - \widetilde{y} ~=~ f(\overline{x}) - g(\overline{x})$$
 	\item \textsc{Zaokrožitvene napake}:
 	Pri izračunu $\widetilde{y}=g(\overline{x})$ lahko pri vsaki osnovni operaciji pride do zaokrožitvene napake, zato na koncu kot numeričen rezultat dobimo $\widehat{y}$.
-	$$D_z = \widetilde{y} - \widehat{y}$$
+	$$D_z ~=~ \widetilde{y} - \widehat{y}$$
 \end{enumerate}
 
 Skupna napaka:
-$$D = D_n + D_m + D_z$$
+$$D ~=~ D_n + D_m + D_z$$
 
 V splošnem lahko ocenimo:
-$$|D| \leq |D_n| + |D_m| + |D_z|$$
+$$|D| ~\leq~ |D_n| + |D_m| + |D_z|$$
 \end{definicija}
 \vspace{0.5cm}
 
@@ -140,7 +141,7 @@ $$|D| \leq |D_n| + |D_m| + |D_z|$$
 Če metoda za $\forall x$ vrne tak $\widehat{y}$, da $\exists \widehat{x}$ absolutno (relativno) blizu $x$, da je $\widehat{y}=f(\widehat{x})$ (točno), je metoda \textit{obratno stabilna}. \\
 
 \noindent V splošnem:
-$$|\text{direktna napaka}| \leq |\text{občutljivost}| \cdot |\text{obratna napaka}|$$
+$$|\text{direktna napaka}| ~\leq~ |\text{občutljivost}| \cdot |\text{obratna napaka}|$$
 
 \end{definicija}
 \vspace{0.5cm}
@@ -234,7 +235,7 @@ Naj bo $\alpha$ ničla funkcije $f$, ki je \textit{zvezno odvedljiva} v okolici 
 	\item $f'(\alpha) = 0$: $\alpha$ je \textit{večkratna} ničla \\
 	
 	Če je $f$ $m$-krat zvezno odveljiva in
-	$$f'(\alpha) = f''(\alpha) = \ldots = f^{(m-1)}(\alpha) = 0,~~f^{(m)} \neq 0,$$
+	$$f'(\alpha) ~=~ f''(\alpha) ~=~ \ldots ~=~ f^{(m-1)}(\alpha) ~=~ 0,~~f^{(m)} \neq 0,$$
 	je $\alpha$ $m$-kratna ničla.
 
 \end{itemize}
@@ -245,7 +246,7 @@ Naj bo $\alpha$ ničla funkcije $f$, ki je \textit{zvezno odvedljiva} v okolici 
 \begin{trditev}[Občutljivost ničel]
 
 Naj bo $\alpha$ enostavna ničla. Če v okolici $x = \alpha$ obstaja inverzna funkcija $\alpha = f^{-1}(0)$ v bistvu "računamo" vrednost inverzne funkcije. Občutljivost je enaka absolutni vrednosti odvoda inverzna funkcije:
-$$|(f^{-1})'(0)| = \frac{1}{|f'(f^{-1}(0))|} = \frac{1}{|f'(\alpha)|}.$$
+$$|(f^{-1})'(0)| ~=~ \frac{1}{|f'(f^{-1}(0))|} ~=~ \frac{1}{|f'(\alpha)|}.$$
 
 Večkratno ničlo lahko izračunamo le z natančnostjo $u^{\frac{1}{m}}$, kjer je $m$ večkratnost ničle (za dvojno ničlo dobimo le polovico točnih decimalk, za trojno le tretjino...). 
 
@@ -303,7 +304,7 @@ Ustavitveni kriterij:
 \begin{izrek}
 
 Naj bo $\alpha = g(\alpha)$ in naj iteracijska  funkcija $g$ na intervalu $I = [\alpha - \delta, \alpha + \delta]$ za nek $\delta > 0$ zadošča Lipschitzovem pogoju
-$$|g(x) - g(y)| \leq m|x - y| ~~\text{za}~~ x, y \in I, 0 \leq m < 1.$$
+$$|g(x) - g(y)| ~\leq~ m|x - y| ~~\text{za}~~ x, y \in I, 0 \leq m < 1.$$
 Potem za $\forall x_0 \in I$ zaporedje $x_{r+1} = g(x_r)$, $r = 0, 1, \ldots$ konvergira k $\alpha$ in velja
 \begin{itemize}
 	\item $|x_r - \alpha| ~\leq~ m^r \cdot |x_0 - \alpha|$
@@ -323,7 +324,7 @@ Naj bo $\alpha = g(\alpha)$, $g$ \textit{zvezno odvedljiva} in $|g'(\alpha)| < 1
 \begin{definicija}
 
 Naj zaporedje $\{ x_r \}$ konvergira proti $\alpha$ ($\lim_{r \rightarrow \infty} x_r = \alpha)$. Pravimo, da zaporedje konvergira z redom konvergence $p$, če obstaja limita
-$$\lim_{r \rightarrow \infty} \frac{|x_{r+1} - \alpha|}{|x_r - \alpha|^p} = C > 0.$$
+$$\lim_{r \rightarrow \infty} \frac{|x_{r+1} - \alpha|}{|x_r - \alpha|^p} ~=~ C > 0.$$
 
 \end{definicija}
 \vspace{0.5cm}
@@ -342,9 +343,9 @@ Naj bo iteracijska funkcija $g$ $p$-krat \textit{zvezno odvedljiva} v okolici ne
 
 \begin{metoda}
 
-$$x_{r+1} = x_r - \frac{f(x_r)}{f'(x_r)}$$
+$$x_{r+1} ~=~ x_r - \frac{f(x_r)}{f'(x_r)}$$
 Konvergenca:
-$$|e_{r+1}| \approx C \cdot |e_r|^2$$
+$$|e_{r+1}| ~\approx~ C \cdot |e_r|^2$$
 
 \end{metoda}
 \vspace{0.5cm}
@@ -371,9 +372,9 @@ Naj bo funkcija $f$ na $I = [a, \infty)$ \textit{dvakrat zvezno odvedljiva, nara
 
 \begin{metoda}[Sekantna metoda]
 
-$$x_{r+1} = x_r - \frac{f(x_r)(x_r - x_{r-1})}{f(x_r) - f(x_{r-1})}$$
+$$x_{r+1} ~=~ x_r - \frac{f(x_r)(x_r - x_{r-1})}{f(x_r) - f(x_{r-1})}$$
 Konvergenca:
-$$|e_{r+1}| \approx C \cdot |e_r| \cdot |e_{r-1}|$$
+$$|e_{r+1}| ~\approx~ C \cdot |e_r| \cdot |e_{r-1}|$$
 
 \end{metoda}
 \vspace{0.5cm}
@@ -383,7 +384,7 @@ $$|e_{r+1}| \approx C \cdot |e_r| \cdot |e_{r-1}|$$
 Skozi točke $(x_r, f(x_r))$, $(x_{r-1}, f(x_{r-1}))$, \\$(x_{r-2}, f(x_{r-2}))$ potegnemo kvadratni polinom $y = p(x)$ in za $x_{r+1}$ vzamemo tisto ničlo polinoma $p$, ki je bližje $x_r$. \\
 
 \noindent Konvergenca:
-$$|e_{r+1}| \approx C \cdot |e_r| \cdot |e_{r-1}| \cdot |e_{r-2}|$$
+$$|e_{r+1}| ~\approx~ C \cdot |e_r| \cdot |e_{r-1}| \cdot |e_{r-2}|$$
 
 \end{metoda}
 \vspace{0.5cm}
@@ -391,7 +392,7 @@ $$|e_{r+1}| \approx C \cdot |e_r| \cdot |e_{r-1}| \cdot |e_{r-2}|$$
 \begin{metoda}[Inverzna interpolacija]
 
 Zamenjamo vlogi $x$ in $y$ in vzamemo kvadratni polinom $x = \mathcal{L}(y)$, ki gre skozi točke $(x_r, f(x_r))$, $(x_{r-1}, f(x_{r-1}))$, $(x_{r-2}, f(x_{r-2}))$. Za $x_{r+1}$ vzamemo
-$$x_{r+1} = \mathcal{L}(0).$$
+$$x_{r+1} ~=~ \mathcal{L}(0).$$
 Red konvergence je enak kot pri \textit{Mullerjevi metodi}.
 
 \end{metoda}
@@ -414,7 +415,7 @@ Red konvergence je enak kot pri \textit{Mullerjevi metodi}.
 \begin{definicija}
 
 Sistem $n$ linearnih enačb z $n$ neznankami pišemo v obliki
-$$Ax = b, ~~A \in \mathbb{R}^{n \times n} ~(\mathbb{C}^{n \times n}), ~x, b \in \mathbb{R}^n ~(\mathbb{C}^n).$$
+$$Ax ~=~ b, ~~A \in \mathbb{R}^{n \times n} ~(\mathbb{C}^{n \times n}), ~x, b \in \mathbb{R}^n ~(\mathbb{C}^n).$$
 
 \end{definicija}
 \vspace{0.5cm}
@@ -467,7 +468,7 @@ Matrika je \textit{simetrično pozitivno definitna}, če $A = A^T$ in $x^T A x >
 \begin{definicija}
 
 Če za $x \neq 0$ velja $Ax = \lambda x$, je $\lambda$ lastna vrednost in $x$ lastni vektor. Vsaka matrika ima $n$ lastnih vrednosti, ki so ničle karakterističnega polinoma
-$$p(\lambda) := \det{(A - \lambda I)}.$$
+$$p(\lambda) ~:=~ \det{(A - \lambda I)}.$$
 
 \end{definicija}
 \vspace{0.5cm}
@@ -482,11 +483,11 @@ $$p(\lambda) := \det{(A - \lambda I)}.$$
 Vektorska norma je preslikava $\|.\|: \mathbb{C}^n \rightarrow \mathbb{R}$, da velja:
 \begin{enumerate}
 	\item[1)] Nenegativnost: 
-	$$\|x\| \geq 0, ~~\|x\| = 0 \Leftrightarrow x = 0$$
+	$$\|x\| ~\geq~ 0, ~~~\|x\| = 0 \Leftrightarrow x = 0$$
 	\item[2)] Homogenost:
-	$$\|\alpha x\| = |\alpha| \cdot \|x\|$$
+	$$\|\alpha x\| ~=~ |\alpha| \cdot \|x\|$$
 	\item[3)] Trikotniška neenakost:
-	$$\|x+y\| \leq \|x\| + \|y\|$$
+	$$\|x+y\| ~\leq~ \|x\| + \|y\|$$
 \end{enumerate}
 
 \end{definicija}
@@ -496,11 +497,11 @@ Vektorska norma je preslikava $\|.\|: \mathbb{C}^n \rightarrow \mathbb{R}$, da v
 
 Matrična norma je preslikava $\|.\|: \mathbb{C}^{n \times n} \rightarrow \mathbb{R}$, da velja:
 \begin{enumerate}
-	\item[1)] $$\|A\| \geq 0, ~~\|A\| = 0 \Leftrightarrow A = 0$$
-	\item[2)] $$\|\alpha A\| = |\alpha| \cdot \|A\|$$
-	\item[3)] $$\|A + B\| \leq \|A\| + \|B\|$$
+	\item[1)] $$\|A\| ~\geq~ 0, ~~~\|A\| = 0 \Leftrightarrow A = 0$$
+	\item[2)] $$\|\alpha A\| ~=~ |\alpha| \cdot \|A\|$$
+	\item[3)] $$\|A + B\| ~\leq~ \|A\| + \|B\|$$
 	\item[4)] Submultiplikativnost:
-	$$\|A \cdot B\| \leq \|A\| \cdot \|B\|$$
+	$$\|A \cdot B\| ~\leq~ \|A\| \cdot \|B\|$$
 	za $\forall A, B \in \mathbb{C}^{n \times n}$ in $\forall \alpha \in \mathbb{C}$.
 \end{enumerate}
 
@@ -510,7 +511,7 @@ Matrična norma je preslikava $\|.\|: \mathbb{C}^{n \times n} \rightarrow \mathb
 \begin{lema}[Operatorska norma]
 
 Če je za poljubno vektorsko normo $\|.\|_v$ definiramo 
-$$\|A\| := \max_{x \neq 0} \frac{\|Ax\|_v}{\|x\|_v},$$
+$$\|A\| ~:=~ \max_{x \neq 0} \frac{\|Ax\|_v}{\|x\|_v},$$
 je to matrična norma.
 
 \end{lema}
@@ -533,7 +534,7 @@ $$\|A\|_2 ~=~ \sigma_1 (A) = \max_{i = 1, \ldots, n} \sqrt{\lambda_i (A^H A)}$$
 \begin{lema}
 
 Za vsako matrično normo $\|.\|_m$ obstaja taka vektorska norma $\|.\|_v$, ki je z njo usklajena, kar pomeni, da za vse pare $A, x$ velja
-$$\|A x\|_v \leq \|A\|_m \cdot \|x\|_v.$$
+$$\|A x\|_v ~\leq~ \|A\|_m \cdot \|x\|_v.$$
 
 \end{lema}
 \vspace{0.5cm}
@@ -541,7 +542,7 @@ $$\|A x\|_v \leq \|A\|_m \cdot \|x\|_v.$$
 \begin{lema}
 
 Za vsako lastno vrednost $\lambda$ in poljubno matrično normo $\|A\|$ velja:
-$$|\lambda| \leq \|A\|.$$
+$$|\lambda| ~\leq~ \|A\|.$$
 
 \end{lema} 
 \vspace{0.5cm}
@@ -556,8 +557,8 @@ $$|\lambda| \leq \|A\|.$$
 Če je $\|X\| < 1$, potem velja:
 \begin{enumerate}
 	\item[a)] $I-X$ je \textit{nesingularna}
-	\item[b)] $(I-X)^{-1} = \mathlarger{\sum_{i=0}^{\infty} x^i} = I + X + X^2 + \ldots$
-	\item[c)] Če je $\|I\| = 1$, je $\|(I-X)^{-1}\| \leq \cfrac{1}{1-\|x\|}$
+	\item[b)] $(I-X)^{-1} ~=~ \mathlarger{\sum_{i=0}^{\infty} x^i} ~=~ I + X + X^2 + \ldots$
+	\item[c)] Če je $\|I\| = 1$, ~je $\|(I-X)^{-1}\| ~\leq~ \cfrac{1}{1-\|x\|}$
 \end{enumerate}
 
 \end{lema}
@@ -567,7 +568,7 @@ $$|\lambda| \leq \|A\|.$$
 
 Naj bo $A$ \textit{nesingularna} in $\Delta A$ taka motnja, da je $\|\Delta A\| < \frac{1}{\|A^{-1}\|}.$
 Če je $Ax = b$ in $(A + \Delta A)(x + \Delta x) = b + \Delta b$, potem velja:
-$$\frac{\|\Delta x\|}{\|x\|} \leq \frac{K(A)}{1 - K(A)\frac{\|\Delta A\|}{\|A\|}} \left( \frac{\|\Delta A\|}{\|A\|} + \frac{\|\Delta b\|}{\|b\|} \right),$$
+$$\frac{\|\Delta x\|}{\|x\|} ~\leq~ \frac{K(A)}{1 - K(A)\frac{\|\Delta A\|}{\|A\|}} \left( \frac{\|\Delta A\|}{\|A\|} + \frac{\|\Delta b\|}{\|b\|} \right),$$
 kjer je $K(A) = \|A\| \cdot \|A^{-1}\|$.
 
 \end{izrek}
@@ -589,7 +590,7 @@ Za matriko $A$ je ekvivalentno:
 \end{izrek}
 \vspace{0.5cm}
 
-\begin{algoritem}[LU Razcep]
+\begin{algoritem}[LU razcep]
 ~
 \begin{lstlisting}
 j = 1,...,n-1
@@ -627,6 +628,442 @@ $~~~~$x$_{\texttt{i}}$ = $\cfrac{\texttt{1}}{\texttt{u}_\texttt{ii}}$(y$_{\textt
 $$n^2 + n$$
 
 \end{algoritem}
+\vspace{0.5cm}
+
+\begin{algoritem}[LU razcep z delnim pivotiranjem]
+~
+\begin{lstlisting}
+j = 1,...,n-1
+$~~~~$poisci |a$_{\texttt{p}_\texttt{j}}$| = max$_{\texttt{j} \leq \texttt{l} \leq \texttt{n}}$ |a$_{\texttt{l}_\texttt{j}}$|
+$~~~~$zamenjaj vrstici j in p
+$~~~~$i = j+1,...,n
+$~~~~~~~~$l$_{\texttt{ij}}$ = $\cfrac{\texttt{a}_{\texttt{ij}}}{\texttt{a}_{\texttt{jj}}}$
+$~~~~~~~~$k = j+1,...,n
+$~~~~~~~~~~~~$a$_{\texttt{ik}}$ = a$_{\texttt{ik}}$ - l$_{\texttt{ij}}$a$_{\texttt{jk}}$
+\end{lstlisting}
+Pri pivotiranju vedno velja $|l_{ij}| \leq 1$, saj saj je $|a_{ij}| \leq |a_{jj}|$ 
+
+\end{algoritem}
+\vspace{0.5cm}
+
+\begin{izrek}
+
+Če je $\det{(A)} \neq 0$, potem obstaja taka permutacijska matrika $P$, da obstaja LU razcep 
+$$PA ~=~ LU,$$
+kjer je $L$ spodnjetrikotniška matrika, $U$ pa zgornjetrikotniška matrika.
+
+\end{izrek}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Stabilnost reševanja sistemov in LU razcepov}
+\vspace{0.5cm}
+
+\begin{lema}
+
+Naj bo $L$ \textit{nesingularna spodnje trikotna} matrika velikosti $n \times n$. Če sistem $Ly ) b$ rešimo s premo substitucijo, potem izračunani $\hat{y}$ zadošča
+$$(L + \Delta L) \hat{y} ~=~ b,$$
+kjer je $|\Delta L| \leq n u |L|$. Reševanje spodenje trikotnega sistema s premo substitucijo je torej obratno stabilno.
+
+\end{lema}
+\vspace{0.5cm}
+
+\begin{lema}
+
+Naj bo $U$ \textit{zgornje trikotna} matrika velikosti $n \times n$, $\det{U} \neq 0$. Če sistem $Ux = y$ rešimo z obratno substitucijo, potem numerično izračunani $\hat{x}$ zadošča
+$$(U + \Delta U) \hat{x} ~=~ y,$$
+kjer je 
+$$|\Delta U| ~\leq~ n u |U|.$$ 
+Reševanje z obratno substitucijo je tudi obratno stabilno.
+
+\end{lema}
+\vspace{0.5cm}
+
+\begin{lema}
+
+Naj bo $A$ \textit{nesingularna} matrika velikosti $n \times n$, kjer se izvede LU razcep brez pivotiranja. Za izračunani matriki $\hat{L}$ in $\hat{U}$ velja
+$$A + E ~=~ \hat{L} \hat{U},$$
+kjer je 
+$$|E| ~\leq~ n u |\hat{L}| |\hat{U}|.$$
+
+\end{lema}
+\vspace{0.5cm}
+
+\begin{izrek}
+
+Za izračunano rešitev $\hat{x}$ sistema linearnih enačb $Ax = b$ z uporabo LU razcepa velja 
+$$(A + \Delta A) \hat{x} ~=~ b,$$
+kjer je 
+$$|\Delta A| ~\leq~ 3 n u |L| |U| + \sigma(u^2).$$
+
+\end{izrek}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\pagebreak
+
+% #################################################################################################
+
+\section{SISTEMI NELINEARNIH ENAČB}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Uvod}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Sistem nelinearnih enačb je sistem oblike
+\begin{align*}
+f_1(x_1, \ldots, x_n) ~&=~ 0 \\
+\vdots \\
+f_n(x_1, \ldots, x_n) ~&=~ 0
+\end{align*}
+za $f_i: \mathbb{R}^n \rightarrow \mathbb{R}$. Krajše zapišemo kot
+$$F(x) ~=~ 0, ~~~F = \begin{bmatrix}
+f_1 \\
+\vdots \\
+f_n
+\end{bmatrix},$$
+kjer je $F: \mathbb{R}^n \rightarrow \mathbb{R}^n$ in $x \in \mathbb{R}^n$.
+
+\end{definicija}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Navadna iteracija}
+\vspace{0.5cm}
+
+\begin{metoda}
+
+To je posplošitev navadne iteracije za eno spremenljivko. Poiščemo funkcijo $G: \mathbb{R}^n \rightarrow \mathbb{R}^n$, da velja
+$$F(\alpha) = 0 ~\Leftrightarrow~ \alpha = G(\alpha), ~~~\alpha \in \mathbb{R}^n.$$
+Izberemo $x^{(0)} \in \mathbb{R}^n$ in tvorimo zaporedje
+$$x^{(r+1)} ~=~ G(x^{(r)}), ~~~r = 0, 1, \ldots$$
+
+\end{metoda}
+\vspace{0.5cm}
+
+\begin{izrek}
+
+Naj bo bo $G: \mathbb{R}^n \rightarrow \mathbb{R}^n$ zvezno odvedljiva na $\Omega \subset \mathbb{R}^n$. Če velja:
+\begin{enumerate}
+	\item[a)] $x \in \Omega ~\Rightarrow~ G(x) \in \Omega$
+	\item[b)] $x \in \Omega ~\Rightarrow~ \rho(JG(x)) \leq m < 1$
+\end{enumerate}
+potem ima $G$ v $\Omega$ natanko eno negibno točko $\alpha$ in zaporedje $x^{(r+1)} = G(x^{(r)})$, $r = 0, 1, \ldots$, za $\forall x^{(0)} \in \Omega$ konvergira k $\alpha$. Tu je
+$JG(x) ~=~ \begin{bmatrix}
+\frac{\partial g_1}{\partial x_1}(x) & \ldots & \frac{\partial g_1}{\partial x_n}(x) \\
+\vdots & \ddots & \vdots \\
+\frac{\partial g_n}{\partial x_1}(x) & \ldots & \frac{\partial g_n}{\partial x_n}(x)
+\end{bmatrix}$
+Jacobijeva matrika parcialnih odvodov in $\rho$ spektralni radij\footnote{Največja absolutna vrednost lastnih vrednosti.}.
+
+\end{izrek}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Newtonova metoda}
+\vspace{0.5cm}
+
+\begin{metoda}
+
+Naj bo $x$ približek za ničlo funkcije $f$. Iščemo popravek $\Delta x$, da bo $F(x + \Delta x) = 0$. Z uporabo razvoja v Taylorjevo vrsto dobimo
+$$F(x + \Delta x) ~=~ F(x) + JF(x) \cdot \Delta x + \underbrace{\mathcal{O}(\|\Delta x\| ^2)}_{\text{zanemarimo}}.$$
+Iz tega sledi $\Delta x = -JF(x)^{-1} \cdot F(x)$, za nov približek vzamemo torej
+$$x + \Delta x ~=~ x - JF(x)^{-1} \cdot F(x),$$
+za iteracijsko funkcijo pa 
+$$G(x) ~=~ x - JF(x)^{-1} \cdot F(x).$$
+
+\end{metoda}
+\vspace{0.5cm}
+
+\begin{algoritem}
+~
+\begin{lstlisting}
+x$^{\texttt{(0)}}$
+r = 0, 1,...
+$~~~~$JF(x$^{\texttt{(r)}}$)$\cdot$$\Delta$x$^{\texttt{(r)}}$ = -F(x$^{\texttt{(r)}}$)
+$~~~~$x$^{\texttt{(r+1)}}$ = x$^{\texttt{(r)}}$ + $\Delta$x$^{\texttt{(r)}}$
+\end{lstlisting}
+\end{algoritem}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\pagebreak
+
+% #################################################################################################
+
+\section{LINEARNI PROBLEM NAJMANJŠIH \\ KVADRATOV}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Uvod}
+\vspace{0.5cm}
+
+\begin{metoda}
+
+To je primer predoločenega sistema, kjer imamo več enačb kot neznank. V splošnem\footnote{Razen v primeru kot je $b \in \text{Im}(A)$} nima rešitve. Namesto tega iščemo $x$, ki minimizira normo ostanka $Ax-b$. Če iščemo minimum $\|Ax-b\|_2$, potem je to linearni problem najmanjših kvadratov. Ustrezen $x$ je rešitev po \textit{metodi najmanjših kvadratov}.
+
+\end{metoda}
+\vspace{0.5cm}
+
+\begin{izrek}
+
+Naj bo $A \in \mathbb{R}^{m \times n}$, $b \in \mathbb{R}^m$, $m \geq n$, $\text{rang}(A) = n$. Rešitev normalnega sistema
+$$A^T A x ~=~ A^T b$$
+je rešitev predoločenega sistema $Ax = b$ po metodi najmanjših kvadratov.
+
+\end{izrek}
+\vspace{0.5cm}
+
+\begin{opomba}
+
+Pravilna izpeljava:
+$$A^T(Ax-b) ~=~ 0 ~~\Rightarrow~~ A^T A x = A^T b$$
+
+\end{opomba}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Razcep Cholskega}
+\vspace{0.5cm}
+
+\begin{izrek}
+
+Dan je sistem $Bx = c$, $B$ je simetrična pozitivno definitna\footnote{$B = B^T$, ~~~$z^T B z > 0$ ~za~ $z \neq 0$} matrika velikosti $n \times n$. Velja:
+\begin{enumerate}
+
+	\item Če je $B$ simetrična pozitivno definitna $~\Rightarrow~$ vse njene vodilne podmatrike so simetrične pozitivno definitne.
+	
+	\item Če je $B$ simetrična pozitivno definitna $~\Rightarrow~$ obstaja LU razcep $B = LU$, kjer je $u_{ii} > 0$ za $i = 1, \ldots, n$.
+	
+	\item $B$ je simetrično pozitivno definitna $~\Leftrightarrow~$ obstaja nesingularna spodnje trikotna matrika $U$, da je $B = U U^T$, $u_{ii} > 0$ za $i = 1, \ldots, n$.
+
+\end{enumerate}
+
+\end{izrek}
+\vspace{0.5cm}
+
+\begin{algoritem}
+~
+\begin{lstlisting}
+k = 1,..., n
+$~~~~$v$_{\texttt{kk}}$ = (b$_{kk}$ - $\mathlarger{\sum_{\texttt{i = 1}}^{\texttt{k - 1}}{\texttt{v}_{\texttt{ki}}}^{\texttt{2}}}$)$^{\frac{\texttt{1}}{\texttt{2}}}$
+$~~~~$j = k + 1,..., n 
+$~~~~~~~~$v$_{\texttt{jk}}$ = $\frac{\texttt{1}}{\texttt{v}_{\texttt{kk}}}$(b$_{\texttt{jk}}$ - $\mathlarger{\sum_{\texttt{i = 1}}^{\texttt{k-1}}}$v$_{\texttt{ji}}$v$_{\texttt{ki}}$)
+\end{lstlisting}
+Število operacij:
+$$\sum_{k=1}^n \left( 2k + 2(n-k)k \right) ~=~ \frac{1}{3}n^3 + \mathcal{O}(n^2)$$
+\end{algoritem}
+\vspace{0.5cm}
+
+\begin{metoda}
+
+Reševanje sistema $Bx = c$, $B$ je simetrična pozitivno definitna matrika:
+\begin{enumerate}
+	\item $B = V V^T$
+	\item reši $V y = b$
+	\item rešo $V^T x = y$
+\end{enumerate}
+
+\end{metoda}
+\vspace{0.5cm}
+
+\begin{metoda}
+
+Reševanje predoločenega sistema $Ax = b$, $A$ je matrika velikosti $m \times n$, $m \geq n$, po metodi najmanjših kvadratov:
+\begin{enumerate}
+	\item $B = A^T A$, ~$c = A^T b$
+	\item $B = V V^T$
+	\item reši $V y = b$
+	\item reši $V^T x = y$
+\end{enumerate}
+
+\end{metoda}
+\vspace{0.5cm}
+
+\begin{metoda}
+
+Dana je $A \in \mathbb{R}^{m \times n}$, ~$m > n$, ~$\text{rang}(A) = n$. Po metodi najmanjših kvadratov iščemo $x$. $A^T A$ je simetrična, uporabimo razcep Choleskegta:
+\begin{enumerate}
+	\item $B = A^T A$, ~$c = A^T b$
+	\item $B = V V^T$, ~$V$ je spodnje trikotna matrika
+	\item reši $V y = c$
+	\item reši $V^T x = y$
+\end{enumerate}
+
+\end{metoda}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{QR razcep}
+\vspace{0.5cm}
+
+\begin{izrek}
+
+Naj bo $A \in \mathbb{R}^{m \times n}$, ~$m \geq n$, ~$\text{rang}(A) = n$. Potem obstaja enoličen razcep $A = QR$, kjer je $Q$ matrika velikosti $m \times n$ z ortonormiranimi stolpci in $R$ zgornje trikotna matrika velikosti $n \times n$ s pozitivnimi diagonalnimi elementi.
+
+\end{izrek}
+\vspace{0.5cm}
+
+\begin{algoritem}
+~
+\begin{lstlisting}
+k = 1,..., n
+$~~~~$$\mathcal{L}_{\texttt{k}}$ = a$_{\texttt{k}}$
+$~~~~$i = 1,..., k-1
+$~~~~~~~~$r$_{\texttt{ik}}$ = ${\mathcal{L}_{\texttt{i}}}^{\texttt{T}}$$\cdot$a$_{\texttt{k}}$
+$~~~~~~~~$$\mathcal{L}_{\texttt{k}}$ = $\mathcal{L}_{\texttt{k}}$ - r$_{\texttt{ik}}$$\cdot$$\mathcal{L}_{\texttt{i}}$ 
+$~~~~$r$_{\texttt{kk}}$ = $\|\mathcal{L}_{\texttt{u}}\|_{\texttt{2}}$
+$~~~~$$\mathcal{L}_{\texttt{k}}$ = $\frac{\texttt{1}}{\texttt{r}_\texttt{ku}}$$\mathcal{L}_{\texttt{k}}$
+\end{lstlisting}
+Število operacij:
+$$\sum_{k=1}^n \left( \sum_{i=1}^{k-1} (2m + 2m) + 2m + 1 + m \right) ~=~ 2mn^2 + \mathcal{O}(mn)$$
+
+\end{algoritem}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Givensove rotacije}
+\vspace{0.5cm}
+
+\begin{algoritem}
+~
+\begin{lstlisting}
+$\tilde{\texttt{Q}}$ = I$_{\texttt{m}}$ (Ce potrebujemo $\tilde{\texttt{Q}}$)
+i = 1,..., n
+$~~~~$k = i+1,..., m
+$~~~~~~~~$r = (${\texttt{a}_{\texttt{ii}}}^{\texttt{2}}$ + ${\texttt{a}_{\texttt{ki}}}^{\texttt{2}}$)$^{\frac{\texttt{1}}{\texttt{2}}}$, c = $\frac{\texttt{a}_{\texttt{ii}}}{\texttt{r}}$, s = $\frac{\texttt{a}_{\texttt{ki}}}{\texttt{r}}$
+$~~~~~~~~$A([i k], i:n) = $\begin{bmatrix}
+\texttt{c} & \texttt{s} \\
+\texttt{-s} & \texttt{c}
+\end{bmatrix}$ A([i k], i:n)
+$~~~~~~~~$b([i k]) = $\begin{bmatrix}
+\texttt{c} & \texttt{s} \\
+\texttt{-s} & \texttt{c}
+\end{bmatrix}$ b([i k]) (Ce resujemo Ax = b po m.n.k.)
+$~~~~~~~~$$\tilde{\texttt{Q}}$([i k],:) = $\begin{bmatrix}
+\texttt{c} & \texttt{s} \\
+\texttt{-s} & \texttt{c}
+\end{bmatrix}$ $\tilde{\texttt{Q}}$([i k],:)
+$\tilde{\texttt{Q}}$ = $\tilde{\texttt{Q}}^{\texttt{T}}$
+\end{lstlisting}
+Število operacij:
+$$\sum_{i=1}^n \sum_{k=i+1}^m \left(6 + 6(n-i+1) + 6 \right) ~\approx~ \sum_{i=1}^n 6(n-i)(m-i) ~=~ 3mn^2 - n^3$$
+Če potrebujemo $\tilde{Q}$, je to še dodatnih $6m^2n - 3mn^2$ operacij.
+
+\end{algoritem}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Householderjeva zrcaljenja}
+
+\begin{algoritem}
+~
+\begin{lstlisting}
+$\tilde{\texttt{Q}}$ = I$_{\texttt{m}}$ (Ce potrebujemo $\tilde{\texttt{Q}}$)
+i = 1,..., n (v primeru m=n le do n-1)
+$~~~~$doloci w$_{\texttt{i}} \in \mathbb{R}^{\texttt{m-n+1}}$, ki prezrcali A(i:m, i) v $\pm$*$\cdot$e$_{\texttt{1}}$
+$~~~~$A(i:m, i:n) = P$_{\texttt{i}}$$\cdot$A(i:m, i:n)
+$~~~~$b(i:m) = P$_{\texttt{i}}$$\cdot$b(i:m)
+$~~~~$$\tilde{\texttt{Q}}$(i:m,:) = P$_{\texttt{i}}$$\cdot$$\tilde{\texttt{Q}}$(i:m,:)
+$\tilde{\texttt{Q}}$ = $\tilde{\texttt{Q}}^{\texttt{T}}$
+\end{lstlisting}
+Število operacij:
+\begin{align*}
+\sum_{i=1}^n (2(m-i+1) + (n-i+1)4(m-i+1) + 4(m-i+1)) ~&\approx~ \\
+\approx~ \sum_{i=1}^n 4(n-i)(m-i) ~&\approx~ 2mn^2 - \frac{2}{3}n^3
+\end{align*}
+Če potrebujemo še $\tilde{Q}$ porabimo še dodatnih $4m^2n - 2mn^2$ operacij.
+
+\end{algoritem}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Singularni razcep (SVD)}
+\vspace{0.5cm}
+
+\begin{izrek}
+
+Za $A \in \mathbb{R}^{m \times n}$, ~$m \geq n$, obstaja razcep $A = U \Sigma V^T$, kjer je $U$ ortogonalna matrika velikosti $m \times m$, V ortogonalna matrika velikosti $n \times n$ in $\Sigma$ matrika velikosti $m \times n$ oblike
+$$\Sigma ~=~ \begin{bmatrix}
+\sigma_1 & ~ & ~ \\
+~ & \ddots & ~ \\
+~ & ~ & \sigma_n
+\end{bmatrix},$$
+kjer so $\sigma_1 \geq \sigma_2 \geq \ldots \geq \sigma_n \geq 0$ singularne vrednosti matrike $A$.
+
+\end{izrek}
+\vspace{0.5cm}
+
+\begin{lema}
+
+Naj bo $A \in \mathbb{R}^{m \times n}$, ~$m \geq n$, ~$\text{rang}(A) = n$. Potem je za $b \in \mathbb{R}^m$ minimum $\|Ax - b\|_2$ dosežen pri 
+$$x = \sum_{i=1}^n \frac{{u_i}^T b}{\sigma_i} v_i.$$
+ 
+\end{lema}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $A \in \mathbb{R}^{m \times n}$, ~$m \geq n$, ~$\text{rang}(A) = r < n$. Če je $A = U \Sigma U^T$ singularni razcep $A$, potem ima izmed vseh vektorjev $x \in \mathbb{R}^n$, ki minimizirajo $\|Ax - b\|_2$, najmanjšo normo $\|x\|_2$ vektor
+$$x = \sum_{i=1}^r \frac{{u_i}^T b}{\sigma_i} v_i.$$
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Matrike $X \in \mathbb{R}^{n \times m}$ je psevdoinverz matrike $A$, če zadošča naslednjim pogojem:
+\begin{enumerate}
+	\item $AXA = A$
+	\item $XAX = X$
+	\item $(AX)^T = AX$
+	\item $(XA)^T = XA$
+\end{enumerate} 
+Če je $A$ matrika velikosti $n \times n$, ~$\det(A) \neq 0$, potem je
+$$A^+ ~=~ A^{-1}.$$ 
+Če je $A$ matrika velikosti $m \times n$, ~$\text{rang}(A) = 0$, ~$m \geq n$, potem je  $$A^+ ~=~ (A^T A)^{-1} A^T.$$
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{izrek}
+
+Za $A \in \mathbb{R}^{m \times n}$, ~$A = U \Sigma V^T$, je
+$$A^+ ~=~ V \Sigma^+ U^T,$$
+kjer je
+$$\Sigma^+ ~=~ \begin{bmatrix}
+{\sigma_1}^{-1} & ~ & ~ & ~ & ~ & ~ \\
+~ & \ddots & ~ & ~ & ~ & ~ \\
+~ & ~ & {\sigma_r}^{-1} & ~ & ~ & ~ \\
+~ & ~ & ~ & 0 & ~ & ~ \\
+~ & ~ & ~ & ~ & \ddots & \\
+~ & ~ & ~ & ~ & ~ & 0
+\end{bmatrix},$$
+če je $\text{rang}(A) ) r$. \\
+
+\noindent Če je $A = U \Sigma V^T$, je 
+\begin{align*}
+A ~&=~ \sum_{i=1}^r \sigma_1 u_i {v_i}^T \\ 
+A^+ ~&=~ \sum_{i=1}^r \frac{1}{\sigma_1} v_i {u_i}^T \\
+A^+ b ~&=~ \sum_{i=1}^r \frac{{u_i}^T b}{\sigma_i} v:i
+\end{align*}
+
+\end{izrek}
 \vspace{0.5cm}
 
 % *************************************************************************************************
