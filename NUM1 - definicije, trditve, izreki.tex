@@ -24,7 +24,8 @@
 \newtheorem*{metoda}{Metoda}
 
 \title{Numerične metode 1 - definicije, trditve in izreki}
-\author{Oskar Vavtar}
+\author{Oskar Vavtar \\
+po predavanjih profesorja Bora Plestenjaka}
 \date{2020/21}
 
 \begin{document}
@@ -304,7 +305,7 @@ Ustavitveni kriterij:
 \begin{izrek}
 
 Naj bo $\alpha = g(\alpha)$ in naj iteracijska  funkcija $g$ na intervalu $I = [\alpha - \delta, \alpha + \delta]$ za nek $\delta > 0$ zadošča Lipschitzovem pogoju
-$$|g(x) - g(y)| ~\leq~ m|x - y| ~~\text{za}~~ x, y \in I, 0 \leq m < 1.$$
+$$|g(x) - g(y)| ~\leq~ m|x - y| ~~\text{za}~~ x, y \in I, ~0 \leq m < 1.$$
 Potem za $\forall x_0 \in I$ zaporedje $x_{r+1} = g(x_r)$, $r = 0, 1, \ldots$ konvergira k $\alpha$ in velja
 \begin{itemize}
 	\item $|x_r - \alpha| ~\leq~ m^r \cdot |x_0 - \alpha|$
@@ -323,7 +324,7 @@ Naj bo $\alpha = g(\alpha)$, $g$ \textit{zvezno odvedljiva} in $|g'(\alpha)| < 1
 
 \begin{definicija}
 
-Naj zaporedje $\{ x_r \}$ konvergira proti $\alpha$ ($\lim_{r \rightarrow \infty} x_r = \alpha)$. Pravimo, da zaporedje konvergira z redom konvergence $p$, če obstaja limita
+Naj zaporedje $\{ x_r \}$ konvergira proti $\alpha$ \footnote{$\mathlarger{\lim_{r \rightarrow \infty}} x_r = \alpha$}. Pravimo, da zaporedje konvergira z redom konvergence $p$, če obstaja limita
 $$\lim_{r \rightarrow \infty} \frac{|x_{r+1} - \alpha|}{|x_r - \alpha|^p} ~=~ C > 0.$$
 
 \end{definicija}
@@ -391,7 +392,7 @@ $$|e_{r+1}| ~\approx~ C \cdot |e_r| \cdot |e_{r-1}| \cdot |e_{r-2}|$$
 
 \begin{metoda}[Inverzna interpolacija]
 
-Zamenjamo vlogi $x$ in $y$ in vzamemo kvadratni polinom $x = \mathcal{L}(y)$, ki gre skozi točke $(x_r, f(x_r))$, $(x_{r-1}, f(x_{r-1}))$, $(x_{r-2}, f(x_{r-2}))$. Za $x_{r+1}$ vzamemo
+Zamenjamo vlogi $x$ in $y$ in vzamemo kvadratni polinom $x = \mathcal{L}(y)$, ki gre skozi točke $(f(x_r), x_r)$, $(f(x_{r-1}), x_{r-1})$, $(f(x_{r-2}), x_{r-2})$. Za $x_{r+1}$ vzamemo
 $$x_{r+1} ~=~ \mathcal{L}(0).$$
 Red konvergence je enak kot pri \textit{Mullerjevi metodi}.
 
@@ -444,6 +445,8 @@ Množenje vektorja $x$ z matriko $A$:
 \end{definicija}
 \vspace{0.5cm}
 
+\pagebreak
+
 \begin{definicija}
 
 $A \in \mathbb{R}^{n \times n}$ je \textit{nesingularna}, če (ekvivalentno):
@@ -493,17 +496,22 @@ Vektorska norma je preslikava $\|.\|: \mathbb{C}^n \rightarrow \mathbb{R}$, da v
 \end{definicija}
 \vspace{0.5cm}
 
+\pagebreak
+
 \begin{definicija}
 
 Matrična norma je preslikava $\|.\|: \mathbb{C}^{n \times n} \rightarrow \mathbb{R}$, da velja:
 \begin{enumerate}
-	\item[1)] $$\|A\| ~\geq~ 0, ~~~\|A\| = 0 \Leftrightarrow A = 0$$
-	\item[2)] $$\|\alpha A\| ~=~ |\alpha| \cdot \|A\|$$
-	\item[3)] $$\|A + B\| ~\leq~ \|A\| + \|B\|$$
+	\item[1)] Nenegativnost:
+	$$\|A\| ~\geq~ 0, ~~~\|A\| = 0 \Leftrightarrow A = 0$$
+	\item[2)]Homogenost:
+	 $$\|\alpha A\| ~=~ |\alpha| \cdot \|A\|$$
+	\item[3)] Trikotniška neenakost
+	$$\|A + B\| ~\leq~ \|A\| + \|B\|$$
 	\item[4)] Submultiplikativnost:
 	$$\|A \cdot B\| ~\leq~ \|A\| \cdot \|B\|$$
-	za $\forall A, B \in \mathbb{C}^{n \times n}$ in $\forall \alpha \in \mathbb{C}$.
 \end{enumerate}
+za $\forall A, B \in \mathbb{C}^{n \times n}$ in $\forall \alpha \in \mathbb{C}$.
 
 \end{definicija}
 \vspace{0.5cm}
@@ -557,8 +565,8 @@ $$|\lambda| ~\leq~ \|A\|.$$
 Če je $\|X\| < 1$, potem velja:
 \begin{enumerate}
 	\item[a)] $I-X$ je \textit{nesingularna}
-	\item[b)] $(I-X)^{-1} ~=~ \mathlarger{\sum_{i=0}^{\infty} x^i} ~=~ I + X + X^2 + \ldots$
-	\item[c)] Če je $\|I\| = 1$, ~je $\|(I-X)^{-1}\| ~\leq~ \cfrac{1}{1-\|x\|}$
+	\item[b)] $(I-X)^{-1} ~=~ \mathlarger{\sum_{i=0}^{\infty} X ^i} ~=~ I + X + X^2 + \ldots$
+	\item[c)] Če je $\|I\| = 1$, ~je $\|(I-X)^{-1}\| ~\leq~ \cfrac{1}{1-\|X\|}$
 \end{enumerate}
 
 \end{lema}
@@ -589,6 +597,8 @@ Za matriko $A$ je ekvivalentno:
 
 \end{izrek}
 \vspace{0.5cm}
+
+\pagebreak
 
 \begin{algoritem}[LU razcep]
 ~
@@ -627,6 +637,8 @@ $~~~~$x$_{\texttt{i}}$ = $\cfrac{\texttt{1}}{\texttt{u}_\texttt{ii}}$(y$_{\textt
 Število opracij:
 $$n^2 + n$$
 
+\pagebreak
+
 \end{algoritem}
 \vspace{0.5cm}
 
@@ -662,7 +674,7 @@ kjer je $L$ spodnjetrikotniška matrika, $U$ pa zgornjetrikotniška matrika.
 
 \begin{lema}
 
-Naj bo $L$ \textit{nesingularna spodnje trikotna} matrika velikosti $n \times n$. Če sistem $Ly ) b$ rešimo s premo substitucijo, potem izračunani $\hat{y}$ zadošča
+Naj bo $L$ \textit{nesingularna spodnje trikotna} matrika velikosti $n \times n$. Če sistem $Ly = b$ rešimo s premo substitucijo, potem izračunani $\hat{y}$ zadošča
 $$(L + \Delta L) \hat{y} ~=~ b,$$
 kjer je $|\Delta L| \leq n u |L|$. Reševanje spodenje trikotnega sistema s premo substitucijo je torej obratno stabilno.
 
@@ -872,19 +884,6 @@ Reševanje sistema $Bx = c$, $B$ je simetrična pozitivno definitna matrika:
 \begin{enumerate}
 	\item $B = V V^T$
 	\item reši $V y = b$
-	\item rešo $V^T x = y$
-\end{enumerate}
-
-\end{metoda}
-\vspace{0.5cm}
-
-\begin{metoda}
-
-Reševanje predoločenega sistema $Ax = b$, $A$ je matrika velikosti $m \times n$, $m \geq n$, po metodi najmanjših kvadratov:
-\begin{enumerate}
-	\item $B = A^T A$, ~$c = A^T b$
-	\item $B = V V^T$
-	\item reši $V y = b$
 	\item reši $V^T x = y$
 \end{enumerate}
 
@@ -920,12 +919,12 @@ Naj bo $A \in \mathbb{R}^{m \times n}$, ~$m \geq n$, ~$\text{rang}(A) = n$. Pote
 ~
 \begin{lstlisting}
 k = 1,..., n
-$~~~~$$\mathcal{L}_{\texttt{k}}$ = a$_{\texttt{k}}$
+$~~~~$q$_{\texttt{k}}$ = a$_{\texttt{k}}$
 $~~~~$i = 1,..., k-1
-$~~~~~~~~$r$_{\texttt{ik}}$ = ${\mathcal{L}_{\texttt{i}}}^{\texttt{T}}$$\cdot$a$_{\texttt{k}}$
-$~~~~~~~~$$\mathcal{L}_{\texttt{k}}$ = $\mathcal{L}_{\texttt{k}}$ - r$_{\texttt{ik}}$$\cdot$$\mathcal{L}_{\texttt{i}}$ 
-$~~~~$r$_{\texttt{kk}}$ = $\|\mathcal{L}_{\texttt{u}}\|_{\texttt{2}}$
-$~~~~$$\mathcal{L}_{\texttt{k}}$ = $\frac{\texttt{1}}{\texttt{r}_\texttt{ku}}$$\mathcal{L}_{\texttt{k}}$
+$~~~~~~~~$r$_{\texttt{ik}}$ = ${\texttt{q}_{\texttt{i}}}^{\texttt{T}}$$\cdot$a$_{\texttt{k}}$
+$~~~~~~~~$q$_{\texttt{k}}$ = q$_{\texttt{k}}$ - r$_{\texttt{ik}}$$\cdot$q$_{\texttt{i}}$ 
+$~~~~$r$_{\texttt{kk}}$ = $\|\texttt{q}_{\texttt{u}}\|_{\texttt{2}}$
+$~~~~$q$_{\texttt{k}}$ = $\frac{\texttt{1}}{\texttt{r}_\texttt{ku}}$q$_{\texttt{k}}$
 \end{lstlisting}
 Število operacij:
 $$\sum_{k=1}^n \left( \sum_{i=1}^{k-1} (2m + 2m) + 2m + 1 + m \right) ~=~ 2mn^2 + \mathcal{O}(mn)$$
@@ -991,6 +990,8 @@ $\tilde{\texttt{Q}}$ = $\tilde{\texttt{Q}}^{\texttt{T}}$
 \end{algoritem}
 \vspace{0.5cm}
 
+\pagebreak
+
 % *************************************************************************************************
 
 \subsection{Singularni razcep (SVD)}
@@ -1002,7 +1003,9 @@ Za $A \in \mathbb{R}^{m \times n}$, ~$m \geq n$, obstaja razcep $A = U \Sigma V^
 $$\Sigma ~=~ \begin{bmatrix}
 \sigma_1 & ~ & ~ \\
 ~ & \ddots & ~ \\
-~ & ~ & \sigma_n
+~ & ~ & \sigma_n \\
+~ \\
+~
 \end{bmatrix},$$
 kjer so $\sigma_1 \geq \sigma_2 \geq \ldots \geq \sigma_n \geq 0$ singularne vrednosti matrike $A$.
 
@@ -1036,7 +1039,7 @@ Matrike $X \in \mathbb{R}^{n \times m}$ je psevdoinverz matrike $A$, če zadoš�
 \end{enumerate} 
 Če je $A$ matrika velikosti $n \times n$, ~$\det(A) \neq 0$, potem je
 $$A^+ ~=~ A^{-1}.$$ 
-Če je $A$ matrika velikosti $m \times n$, ~$\text{rang}(A) = 0$, ~$m \geq n$, potem je  $$A^+ ~=~ (A^T A)^{-1} A^T.$$
+Če je $A$ matrika velikosti $m \times n$, ~$\text{rang}(A) = r$, ~$m \geq n$, potem je  $$A^+ ~=~ (A^T A)^{-1} A^T.$$
 
 \end{definicija}
 \vspace{0.5cm}
@@ -1054,12 +1057,12 @@ $$\Sigma^+ ~=~ \begin{bmatrix}
 ~ & ~ & ~ & ~ & \ddots & \\
 ~ & ~ & ~ & ~ & ~ & 0
 \end{bmatrix},$$
-če je $\text{rang}(A) ) r$. \\
+če je $\text{rang}(A) = r$. \\
 
 \noindent Če je $A = U \Sigma V^T$, je 
 \begin{align*}
 A ~&=~ \sum_{i=1}^r \sigma_1 u_i {v_i}^T \\ 
-A^+ ~&=~ \sum_{i=1}^r \frac{1}{\sigma_1} v_i {u_i}^T \\
+A^+ ~&=~ \sum_{i=1}^r \frac{1}{\sigma_i} v_i {u_i}^T \\
 A^+ b ~&=~ \sum_{i=1}^r \frac{{u_i}^T b}{\sigma_i} v_i
 \end{align*}
 
