@@ -486,7 +486,7 @@ $$p(\lambda) ~:=~ \det{(A - \lambda I)}.$$
 Vektorska norma je preslikava $\|.\|: \mathbb{C}^n \rightarrow \mathbb{R}$, da velja:
 \begin{enumerate}
 	\item[1)] Nenegativnost: 
-	$$\|x\| ~\geq~ 0, ~~~\|x\| = 0 \Leftrightarrow x = 0$$
+	$$\|x\| ~\geq~ 0, ~~~\|x\| = 0 \iff x = 0$$
 	\item[2)] Homogenost:
 	$$\|\alpha x\| ~=~ |\alpha| \cdot \|x\|$$
 	\item[3)] Trikotniška neenakost:
@@ -503,7 +503,7 @@ Vektorska norma je preslikava $\|.\|: \mathbb{C}^n \rightarrow \mathbb{R}$, da v
 Matrična norma je preslikava $\|.\|: \mathbb{C}^{n \times n} \rightarrow \mathbb{R}$, da velja:
 \begin{enumerate}
 	\item[1)] Nenegativnost:
-	$$\|A\| ~\geq~ 0, ~~~\|A\| = 0 \Leftrightarrow A = 0$$
+	$$\|A\| ~\geq~ 0, ~~~\|A\| = 0 \iff A = 0$$
 	\item[2)]Homogenost:
 	 $$\|\alpha A\| ~=~ |\alpha| \cdot \|A\|$$
 	\item[3)] Trikotniška neenakost
@@ -753,7 +753,7 @@ kjer je $F: \mathbb{R}^n \rightarrow \mathbb{R}^n$ in $x \in \mathbb{R}^n$.
 \begin{metoda}
 
 To je posplošitev navadne iteracije za eno spremenljivko. Poiščemo funkcijo $G: \mathbb{R}^n \rightarrow \mathbb{R}^n$, da velja
-$$F(\alpha) = 0 ~\Leftrightarrow~ \alpha = G(\alpha), ~~~\alpha \in \mathbb{R}^n.$$
+$$F(\alpha) = 0 ~\iff~ \alpha = G(\alpha), ~~~\alpha \in \mathbb{R}^n.$$
 Izberemo $x^{(0)} \in \mathbb{R}^n$ in tvorimo zaporedje
 $$x^{(r+1)} ~=~ G(x^{(r)}), ~~~r = 0, 1, \ldots$$
 
@@ -858,7 +858,7 @@ Dan je sistem $Bx = c$, $B$ je simetrična pozitivno definitna\footnote{$B = B^T
 	
 	\item Če je $B$ simetrična pozitivno definitna $~\Rightarrow~$ obstaja LU razcep $B = LU$, kjer je $u_{ii} > 0$ za $i = 1, \ldots, n$.
 	
-	\item $B$ je simetrično pozitivno definitna $~\Leftrightarrow~$ obstaja nesingularna spodnje trikotna matrika $U$, da je $B = U U^T$, $u_{ii} > 0$ za $i = 1, \ldots, n$.
+	\item $B$ je simetrično pozitivno definitna $~\iff~$ obstaja nesingularna spodnje trikotna matrika $U$, da je $B = U U^T$, $u_{ii} > 0$ za $i = 1, \ldots, n$.
 
 \end{enumerate}
 
